@@ -18,69 +18,94 @@
       }
 
       container.innerHTML = `
-        <div style="
-          border: 2px solid #007bff;
-          border-radius: 10px;
-          padding: 20px;
-          max-width: 400px;
-          background: #ffffff;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-          font-family: Arial, sans-serif;
-        ">
-          <h3 style="color:#007bff; margin-top:0;">✨ Intention AI</h3>
+  <div style="
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 400px;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    font-family: 'Roboto', Arial, sans-serif;
+    border: 1px solid #e0e0e0;
+  ">
+    <h3 style="
+      color: #111827;
+      margin-top: 0;
+      font-weight: 600;
+      font-size: 20px;
+    ">
+      ✨ Intention AI Predictor
+    </h3>
 
-          <label style="display:block; margin:10px 0;">
-            💰 <b>Price:</b><br/>
-            <input type="number" id="intention-price" value="100" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;"/>
-          </label>
+    <div style="margin: 16px 0;">
+      <label style="font-weight: 500; display: block; margin-bottom: 4px;">💰 Price</label>
+      <input type="number" id="intention-price" value="100" style="
+        width: 100%; padding: 10px; border: 1px solid #ccc;
+        border-radius: 8px; font-size: 14px;
+      "/>
+    </div>
 
-          <label style="display:block; margin:10px 0;">
-            ⏱️ <b>Session Duration (sec):</b><br/>
-            <input type="number" id="intention-session" value="120" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;"/>
-          </label>
+    <div style="margin: 16px 0;">
+      <label style="font-weight: 500; display: block; margin-bottom: 4px;">⏱️ Session Duration (sec)</label>
+      <input type="number" id="intention-session" value="120" style="
+        width: 100%; padding: 10px; border: 1px solid #ccc;
+        border-radius: 8px; font-size: 14px;
+      "/>
+    </div>
 
-          <label style="display:block; margin:10px 0;">
-            📄 <b>Pages Viewed:</b><br/>
-            <input type="number" id="intention-pages" value="3" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;"/>
-          </label>
+    <div style="margin: 16px 0;">
+      <label style="font-weight: 500; display: block; margin-bottom: 4px;">📄 Pages Viewed</label>
+      <input type="number" id="intention-pages" value="3" style="
+        width: 100%; padding: 10px; border: 1px solid #ccc;
+        border-radius: 8px; font-size: 14px;
+      "/>
+    </div>
 
-          <label style="display:block; margin:10px 0;">
-            🔄 <b>Returning User:</b><br/>
-            <select id="intention-returning" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;">
-              <option value="1">Yes</option>
-              <option value="0">No</option>
-            </select>
-          </label>
+    <div style="margin: 16px 0;">
+      <label style="font-weight: 500; display: block; margin-bottom: 4px;">🔄 Returning User</label>
+      <select id="intention-returning" style="
+        width: 100%; padding: 10px; border: 1px solid #ccc;
+        border-radius: 8px; font-size: 14px;
+      ">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
 
-          <label style="display:block; margin:10px 0;">
-            🏷️ <b>Discount Shown:</b><br/>
-            <select id="intention-discount" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;">
-              <option value="1">Yes</option>
-              <option value="0">No</option>
-            </select>
-          </label>
+    <div style="margin: 16px 0;">
+      <label style="font-weight: 500; display: block; margin-bottom: 4px;">🏷️ Discount Shown</label>
+      <select id="intention-discount" style="
+        width: 100%; padding: 10px; border: 1px solid #ccc;
+        border-radius: 8px; font-size: 14px;
+      ">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </div>
 
-          <button id="intention-predict-btn" style="
-            width: 100%;
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 5px;
-            margin-top: 20px;
-            font-size: 16px;
-            cursor: pointer;
-          ">🔍 Predict</button>
+    <button id="intention-predict-btn" style="
+      width: 100%;
+      background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    ">
+      🔍 Predict
+    </button>
 
-          <div id="intention-result" style="
-            margin-top: 15px;
-            font-weight: bold;
-            min-height: 24px;
-            text-align: center;
-            color: #333;
-          "></div>
-        </div>
-      `;
+    <div id="intention-result" style="
+      margin-top: 20px;
+      font-weight: 600;
+      min-height: 24px;
+      text-align: center;
+      color: #111827;
+    "></div>
+  </div>
+`;
 
       const btn = container.querySelector('#intention-predict-btn');
       btn.addEventListener('click', () => this.makePrediction());

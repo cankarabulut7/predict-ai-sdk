@@ -37,7 +37,7 @@
       font-weight: 700;
       margin-bottom: 24px;
     ">
-      ✨ Intention AI Predictor
+      ✨ Predicting Intention AI
     </h2>
 
     <div style="margin-bottom: 20px;">

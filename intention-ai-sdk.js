@@ -20,49 +20,63 @@
       container.innerHTML = `
         <div style="
           border: 2px solid #007bff;
-          border-radius: 8px;
+          border-radius: 10px;
           padding: 20px;
-          max-width: 350px;
+          max-width: 400px;
+          background: #ffffff;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
           font-family: Arial, sans-serif;
-          background: #f9f9f9;
         ">
-          <h3 style="color:#007bff;">🧠 Intention AI</h3>
-          <label style="display:block; margin-top:10px;">💰 Price:
-            <input type="number" id="intention-price" value="100" style="width:100%; padding:5px;"/>
+          <h3 style="color:#007bff; margin-top:0;">✨ Intention AI</h3>
+
+          <label style="display:block; margin:10px 0;">
+            💰 <b>Price:</b><br/>
+            <input type="number" id="intention-price" value="100" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;"/>
           </label>
-          <label style="display:block; margin-top:10px;">⏱️ Session Duration (sec):
-            <input type="number" id="intention-session" value="120" style="width:100%; padding:5px;"/>
+
+          <label style="display:block; margin:10px 0;">
+            ⏱️ <b>Session Duration (sec):</b><br/>
+            <input type="number" id="intention-session" value="120" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;"/>
           </label>
-          <label style="display:block; margin-top:10px;">📄 Pages Viewed:
-            <input type="number" id="intention-pages" value="3" style="width:100%; padding:5px;"/>
+
+          <label style="display:block; margin:10px 0;">
+            📄 <b>Pages Viewed:</b><br/>
+            <input type="number" id="intention-pages" value="3" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;"/>
           </label>
-          <label style="display:block; margin-top:10px;">🔄 Returning User:
-            <select id="intention-returning" style="width:100%; padding:5px;">
+
+          <label style="display:block; margin:10px 0;">
+            🔄 <b>Returning User:</b><br/>
+            <select id="intention-returning" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;">
               <option value="1">Yes</option>
               <option value="0">No</option>
             </select>
           </label>
-          <label style="display:block; margin-top:10px;">🏷️ Discount Shown:
-            <select id="intention-discount" style="width:100%; padding:5px;">
+
+          <label style="display:block; margin:10px 0;">
+            🏷️ <b>Discount Shown:</b><br/>
+            <select id="intention-discount" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:5px;">
               <option value="1">Yes</option>
               <option value="0">No</option>
             </select>
           </label>
+
           <button id="intention-predict-btn" style="
-            margin-top: 20px;
             width: 100%;
             background: #007bff;
-            color: #fff;
+            color: white;
             border: none;
-            padding: 10px;
+            padding: 12px;
             border-radius: 5px;
-            cursor: pointer;
+            margin-top: 20px;
             font-size: 16px;
+            cursor: pointer;
           ">🔍 Predict</button>
+
           <div id="intention-result" style="
             margin-top: 15px;
             font-weight: bold;
             min-height: 24px;
+            text-align: center;
             color: #333;
           "></div>
         </div>

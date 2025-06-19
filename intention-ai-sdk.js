@@ -18,25 +18,53 @@
       }
 
       container.innerHTML = `
-        <div style="border:1px solid #ccc; padding:10px; max-width:320px; font-family:sans-serif;">
-          <h4>Intention AI Prediction</h4>
-          <label>Price: <input type="number" id="intention-price" value="100" /></label><br/>
-          <label>Session Duration (sec): <input type="number" id="intention-session" value="120" /></label><br/>
-          <label>Pages Viewed: <input type="number" id="intention-pages" value="3" /></label><br/>
-          <label>Returning User: 
-            <select id="intention-returning">
+        <div style="
+          border: 2px solid #007bff;
+          border-radius: 8px;
+          padding: 20px;
+          max-width: 350px;
+          font-family: Arial, sans-serif;
+          background: #f9f9f9;
+        ">
+          <h3 style="color:#007bff;">🧠 Intention AI</h3>
+          <label style="display:block; margin-top:10px;">💰 Price:
+            <input type="number" id="intention-price" value="100" style="width:100%; padding:5px;"/>
+          </label>
+          <label style="display:block; margin-top:10px;">⏱️ Session Duration (sec):
+            <input type="number" id="intention-session" value="120" style="width:100%; padding:5px;"/>
+          </label>
+          <label style="display:block; margin-top:10px;">📄 Pages Viewed:
+            <input type="number" id="intention-pages" value="3" style="width:100%; padding:5px;"/>
+          </label>
+          <label style="display:block; margin-top:10px;">🔄 Returning User:
+            <select id="intention-returning" style="width:100%; padding:5px;">
               <option value="1">Yes</option>
               <option value="0">No</option>
             </select>
-          </label><br/>
-          <label>Discount Shown: 
-            <select id="intention-discount">
+          </label>
+          <label style="display:block; margin-top:10px;">🏷️ Discount Shown:
+            <select id="intention-discount" style="width:100%; padding:5px;">
               <option value="1">Yes</option>
               <option value="0">No</option>
             </select>
-          </label><br/>
-          <button id="intention-predict-btn" style="margin-top:10px;">Predict</button>
-          <div id="intention-result" style="margin-top:10px; font-weight:bold;"></div>
+          </label>
+          <button id="intention-predict-btn" style="
+            margin-top: 20px;
+            width: 100%;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+          ">🔍 Predict</button>
+          <div id="intention-result" style="
+            margin-top: 15px;
+            font-weight: bold;
+            min-height: 24px;
+            color: #333;
+          "></div>
         </div>
       `;
 
@@ -54,7 +82,7 @@
       };
 
       const resultDiv = document.querySelector('#intention-result');
-      resultDiv.textContent = 'Predicting...';
+      resultDiv.textContent = '⏳ Predicting...';
 
       try {
         const response = await fetch(this.config.apiUrl + '/predict', {
@@ -66,9 +94,9 @@
         if (!response.ok) throw new Error('Network response was not ok');
 
         const json = await response.json();
-        resultDiv.textContent = `Purchase Probability: ${(json.purchase_probability * 100).toFixed(2)}%`;
+        resultDiv.textContent = `✅ Purchase Probability: ${(json.purchase_probability * 100).toFixed(2)}%`;
       } catch (err) {
-        resultDiv.textContent = 'Error: ' + err.message;
+        resultDiv.textContent = '❌ Error: ' + err.message;
       }
     }
   };

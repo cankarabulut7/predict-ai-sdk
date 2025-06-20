@@ -17,7 +17,7 @@
         return;
       }
 
-     container.innerHTML = `
+      container.innerHTML = `
   <div style="
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(12px);
@@ -119,6 +119,7 @@
     "></div>
   </div>
 `;
+
       const btn = container.querySelector('#intention-predict-btn');
       btn.addEventListener('click', () => this.makePrediction());
     },
@@ -136,6 +137,7 @@
       resultDiv.textContent = '⏳ Predicting...';
 
       try {
+        // 1️⃣ Skoru al
         const response = await fetch(this.config.apiUrl + '/predict', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -145,7 +147,29 @@
         if (!response.ok) throw new Error('Network response was not ok');
 
         const json = await response.json();
-        resultDiv.textContent = `✅ Purchase Probability: ${(json.purchase_probability * 100).toFixed(2)}%`;
+        const probability = json.purchase_probability;
+
+        // 2️⃣ Tavsiye al
+        const adviceResponse = await fetch(this.config.apiUrl + '/advice', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            probability: probability,
+            parameters: data
+          })
+        });
+
+        if (!adviceResponse.ok) throw new Error('Advice network error');
+
+        const adviceJson = await adviceResponse.json();
+        const advice = adviceJson.advice;
+
+        // 3️⃣ Sonucu yaz
+        resultDiv.innerHTML = `
+          ✅ <strong>Purchase Probability:</strong> ${(probability * 100).toFixed(2)}%<br/>
+          💡 <strong>Advice:</strong> ${advice}
+        `;
+
       } catch (err) {
         resultDiv.textContent = '❌ Error: ' + err.message;
       }
